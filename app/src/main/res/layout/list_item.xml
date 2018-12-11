@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/small_layout_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/smsSender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sender no"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/smsContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/smsSender"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:text="Messasge Content"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/smsContent"
+        android:layout_marginTop="2dp"
+        android:text="Time"
+        android:layout_marginBottom="10dp"
+        />
+</RelativeLayout>
