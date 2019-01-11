@@ -1,0 +1,49 @@
+package com.titanictek.titanicapp.services;
+
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
+import android.content.Context;
+import android.util.Log;
+
+import com.titanictek.titanicapp.db.AppDatabase;
+import com.titanictek.titanicapp.db.DatabaseInstance;
+import com.titanictek.titanicapp.db.NewChatThread;
+import com.titanictek.titanicapp.db.NewMessage;
+
+import models.ChatModel;
+
+public class PushNotificationHandler {
+    private final Context context;
+    private AppDatabase appDatabase;
+    PushNotificationHandler(Context context) {
+        this.context = context;
+        appDatabase = DatabaseInstance.instance(context);
+    }
+
+    public void onNewLike(ChatModel.InboxLike inboxLike) {
+        // todo: Add to database
+        try {
+            appDatabase.newLikeDao().insert(inboxLike.toNewLike());
+        } catch (Exception e) {
+            Log.e("SQL", e.getMessage());
+        }
+    }
+
+    public void onNewMatch(NewChatThread newChatThread) {
+        // todo: Add to database
+        try {
+            appDatabase.newChatThreadDao().insert(newChatThread);
+        } catch (Exception e) {
+            Log.e("SQL", e.getMessage());
+        }
+    }
+
+    public void onNewMessage(NewMessage newMessage) {
+        // todo: Add to database
+        try {
+            appDatabase.newMessageDao().insert(newMessage);
+        } catch (Exception e) {
+            Log.e("SQL", e.getMessage());
+        }
+    }
+}
